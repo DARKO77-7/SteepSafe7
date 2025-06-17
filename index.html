@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +6,12 @@
 <title>Cybersecurity Awareness</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   body {
-    margin: 0;
+    margin:0;
     font-family: 'Inter', sans-serif;
     background-color: #0d0d0d;
     color: #eee;
@@ -18,8 +20,16 @@
     flex-direction: column;
     line-height: 1.6;
   }
-  a { color: #ff4c4c; text-decoration: none; transition: color 0.3s ease; }
-  a:hover, a:focus { color: #ff6969; outline: none; }
+  a {
+    color: #ff4c4c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover,
+  a:focus {
+    color: #ff6969;
+    outline: none;
+  }
   header {
     padding: 40px 24px 24px;
     text-align: center;
@@ -39,20 +49,24 @@
     padding: 0 24px;
     display: block;
   }
+  /* Neon glow boxes */
   .neon-box {
     background-color: #1e1e1e;
     border-radius: 16px;
     border: 3px solid #ff4c4c;
     padding: 30px 28px;
     margin-bottom: 48px;
-    box-shadow: 0 0 12px rgba(255, 76, 76, 0.75),
-                inset 0 0 16px rgba(255, 76, 76, 0.5);
+    box-shadow:
+      0 0 12px rgba(255, 76, 76, 0.75),
+      inset 0 0 16px rgba(255, 76, 76, 0.5);
     color: #f5f5f5;
     font-weight: 400;
     font-size: 1.15rem;
     line-height: 1.7;
     cursor: default;
-    transition: box-shadow 0.4s ease, transform 0.3s ease;
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
     user-select: text;
   }
   .neon-box h2, .neon-box h3 {
@@ -62,10 +76,13 @@
   }
   .neon-box:hover,
   .neon-box:focus-within {
-    box-shadow: 0 0 28px #ff4c4c, inset 0 0 28px #ff4c4c;
+    box-shadow:
+      0 0 28px #ff4c4c,
+      inset 0 0 28px #ff4c4c;
     transform: translateY(-10px) scale(1.05);
     outline: none;
   }
+  /* Normal paragraphs and sections */
   section.info-section {
     margin-bottom: 48px;
   }
@@ -90,6 +107,7 @@
   section.info-section ul li {
     margin-bottom: 10px;
   }
+  /* Free coins button */
   #freeCoinsBtn {
     display: block;
     margin: 40px auto 80px;
@@ -106,12 +124,14 @@
     user-select: none;
     text-align: center;
   }
-  #freeCoinsBtn:hover, #freeCoinsBtn:focus {
+  #freeCoinsBtn:hover,
+  #freeCoinsBtn:focus {
     background: #ff1a1a;
     box-shadow: 0 0 25px #ff1a1a;
     outline: none;
     transform: scale(1.08);
   }
+  /* Modal overlay */
   #jumpScareOverlay {
     position: fixed;
     top: 0;
@@ -119,7 +139,7 @@
     right:0;
     bottom: 0;
     background-color: rgba(0,0,0,0.95);
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -129,9 +149,13 @@
     text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
     z-index: 9999;
     user-select: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   #jumpScareOverlay.show {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
   #jumpScareOverlay small {
     font-weight: 400;
@@ -154,53 +178,166 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     user-select: none;
   }
-  #jumpScareOverlay button:hover, #jumpScareOverlay button:focus {
+  #jumpScareOverlay button:hover,
+  #jumpScareOverlay button:focus {
     background: #ff1a1a;
     box-shadow: 0 0 25px #ff1a1a;
     outline: none;
     transform: scale(1.05);
   }
+  /* Responsive */
+  @media (max-width: 640px) {
+    header {
+      padding: 32px 16px 16px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+    }
+    main {
+      margin: 20px 16px 80px;
+      padding: 0 16px;
+    }
+    .neon-box {
+      padding: 24px 20px;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    section.info-section p,
+    section.info-section ul {
+      font-size: 1rem;
+    }
+    #freeCoinsBtn {
+      padding: 12px 28px;
+      font-size: 1.1rem;
+    }
+  }
 </style>
 </head>
 <body>
-<header><h1>Cybersecurity Awareness</h1></header>
-<main>
-  <section class="info-section">
-    <h2>Welcome to Cybersecurity Awareness</h2>
-    <p>Understand how to protect your data and identity online.</p>
-  </section>
-  <div class="neon-box">
-    <h2>What Is Cybersecurity?</h2>
-    <p>Cybersecurity is the practice of defending digital systems and data from malicious attacks.</p>
-  </div>
-  <button id="freeCoinsBtn">Free Coins by T</button>
-</main>
-<footer><p>&copy; 2023 Cybersecurity Awareness Initiative. All rights reserved.</p></footer>
+<header role="banner">
+  <h1>Cybersecurity Awareness</h1>
+</header>
+<main role="main" id="main-content">
 
-<div id="jumpScareOverlay">
-  <div>YOU HAVE BEEN HACKED</div>
-  <small>Be careful</small>
-  <button id="closeJumpscareBtn">Close</button>
+  <!-- Long main page content with mixed neon boxes and normal text sections -->
+
+  <section class="info-section" tabindex="0" aria-label="Introduction and overview">
+    <h2>Welcome to Cybersecurity Awareness</h2>
+    <p>
+      In today's hyper-connected world, cybersecurity is no longer optional – it's essential. The threats online are many, ever-changing, and increasingly sophisticated.
+      It’s vital to understand what cybersecurity means and how you can take active steps to protect yourself and your data from becoming a target.
+    </p>
+  </section>
+
+  <div class="neon-box" tabindex="0" aria-label="What cybersecurity means">
+    <h2>What Is Cybersecurity?</h2>
+    <p>
+      Cybersecurity refers to the set of techniques, technologies, and processes designed to protect computers, networks, programs, and data from damage, attack, or unauthorized access.
+      It ensures the confidentiality, integrity, and availability of information systems.
+    </p>
+  </div>
+
+  <section class="info-section" tabindex="0" aria-label="Importance of cybersecurity">
+    <h2>Why Is Cybersecurity Important?</h2>
+    <p>
+      Every day, individuals and organizations are targeted by cybercriminals seeking to steal sensitive data, disrupt services, or damage reputations.
+      Cybersecurity keeps your personal information safe, preserves business continuity, and protects national security.
+    </p>
+    <p>
+      In recent years, attacks like ransomware, data breaches, and identity theft have become headline news, demonstrating the importance of remaining vigilant and prepared.
+    </p>
+  </section>
+
+  <div class="neon-box" tabindex="0" aria-label="Statistics on cyber attacks">
+    <h2>Cyber Attack Statistics</h2>
+    <ul>
+      <li>Globally, a cyber attack happens every 39 seconds.</li>
+      <li>Phishing accounts for more than 80% of reported security incidents.</li>
+      <li>It takes organizations an average of 197 days to identify a data breach.</li>
+      <li>Over 60% of small businesses close within 6 months of a data breach.</li>
+    </ul>
+  </div>
+
+  <section class="info-section" tabindex="0" aria-label="Real world implications">
+    <h2>Real-World Impact</h2>
+    <p>
+      Cyber attacks can cause significant financial losses, compromise personal privacy, and cause widespread disruption.
+      For individuals, losing personal data can lead to compromised accounts, financial theft, and privacy invasions.
+    </p>
+    <p>
+      For companies, especially those relying heavily on digital infrastructure, a breach can halt operations, erode customer trust, and incur regulatory penalties.
+    </p>
+  </section>
+
+  <div class="neon-box" tabindex="0" aria-label="Common cyber threats">
+    <h2>Common Cyber Threats</h2>
+    <p><strong>Phishing:</strong> Fraudulent communications designed to steal sensitive information.</p>
+    <p><strong>Malware:</strong> Malicious software that damages or disrupts systems.</p>
+    <p><strong>Ransomware:</strong> Malware that encrypts your data until a ransom is paid.</p>
+    <p><strong>Social Engineering:</strong> Manipulating individuals to divulge confidential info.</p>
+  </div>
+
+  <section class="info-section" tabindex="0" aria-label="Protect yourself against cyber threats">
+    <h2>How to Protect Yourself</h2>
+    <ul>
+      <li>Use strong, unique passwords for all your accounts.</li>
+      <li>Enable two-factor authentication wherever available.</li>
+      <li>Keep your software, OS, and security solutions up to date.</li>
+      <li>Be cautious about clicking links or downloading attachments.</li>
+      <li>Back up important data regularly in secure locations.</li>
+      <li>Educate yourself and stay informed about new threats.</li>
+    </ul>
+  </section>
+
+  <div class="neon-box" tabindex="0" aria-label="The power of awareness">
+    <h2>The Power of Awareness</h2>
+    <p>
+      Staying informed is your best defense against cyber threats. Awareness enables you to spot potential dangers, make better security decisions, and reduce your risk of falling victim.
+    </p>
+    <p>
+      Always be vigilant and adopt a security-first mindset in your digital activities.
+    </p>
+  </div>
+
+  <!-- Free coins button triggers the jumpscare -->
+  <button id="freeCoinsBtn" aria-label="Click for free coins by T">Free Coins by T</button>
+
+</main>
+<footer role="contentinfo">
+  <p>&copy; 2023 Cybersecurity Awareness Initiative. All rights reserved.</p>
+</footer>
+
+<!-- Jumpscare Overlay -->
+<div id="jumpScareOverlay" role="alertdialog" aria-modal="true" aria-labelledby="hackedTitle" aria-describedby="hackedDesc" tabindex="-1">
+  <div id="hackedTitle">YOU HAVE BEEN HACKED</div>
+  <small id="hackedDesc">Be careful</small>
+  <button id="closeJumpscareBtn" aria-label="Close warning">Close</button>
 </div>
 
 <script>
-  const freeCoinsBtn = document.getElementById("freeCoinsBtn");
-  const jumpScareOverlay = document.getElementById("jumpScareOverlay");
-  const closeBtn = document.getElementById("closeJumpscareBtn");
+  // Jumpscare logic
+  const freeCoinsBtn = document.getElementById('freeCoinsBtn');
+  const jumpscareOverlay = document.getElementById('jumpScareOverlay');
+  const closeJumpscareBtn = document.getElementById('closeJumpscareBtn');
 
-  freeCoinsBtn.onclick = () => {
-    jumpScareOverlay.classList.add("show");
-  };
+  freeCoinsBtn.addEventListener('click', () => {
+    jumpscareOverlay.classList.add('show');
+    jumpscareOverlay.focus();
+  });
 
-  closeBtn.onclick = () => {
-    jumpScareOverlay.classList.remove("show");
-  };
+  closeJumpscareBtn.addEventListener('click', () => {
+    jumpscareOverlay.classList.remove('show');
+    freeCoinsBtn.focus();
+  });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      jumpScareOverlay.classList.remove("show");
+  // Close jumpscare on Escape key
+  jumpscareOverlay.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') {
+      jumpscareOverlay.classList.remove('show');
+      freeCoinsBtn.focus();
     }
   });
 </script>
 </body>
 </html>
+
